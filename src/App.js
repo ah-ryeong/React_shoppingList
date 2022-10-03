@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 import './App.css';
 
 function App() {
@@ -10,8 +11,9 @@ function App() {
         <li className='item__row'>
           <div className='item'>
             <span className='item__name'>Egg</span>
-            <button className='item__button'><FontAwesomeIcon icon={ faTrash } /></button>
+            <button className='item__delete'><FontAwesomeIcon icon={ faTrash } /></button>
           </div>
+          <div className='item__divider'></div>
         </li>
       </ul>
       <footer className='footer'>
