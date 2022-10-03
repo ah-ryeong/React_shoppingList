@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="list">
+      <header className='header'>Shopping List</header>
+      <ul className='items'>
+        <li className='item__row'>
+          <div className='item'>
+            <span className='item__name'>Egg</span>
+            <button className='item__button'><FontAwesomeIcon icon={ faTrash } /></button>
+          </div>
+        </li>
+      </ul>
+      <footer className='footer'>
+        <input className='footer__input' type='text'></input>
+        <button className='footer__button'>
+          <FontAwesomeIcon icon={ faPlus } />
+        </button>
+      </footer>
     </div>
   );
 }
