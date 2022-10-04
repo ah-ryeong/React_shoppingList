@@ -7,7 +7,6 @@ import { useState } from 'react';
 function App() {
   let [post, setPost] = useState([]);
   let [input, setInput] = useState("");
-  console.log(post);
 
   return (
     <div className="list">
@@ -15,7 +14,7 @@ function App() {
       <ul className='items'>
         <li className='item__row'>
           {
-            post.length !== 0 ? <Post  post = {post}/> : null
+            post.length !== 0 ? <Post  post = {post} setPost={setPost} /> : null
           }
         </li>
       </ul>
@@ -24,8 +23,12 @@ function App() {
           setInput(e.target.value);
         }} value = {input}></input>
         <button className='footer__button' onClick={() => {
+          const text = {
+            id: post.length,
+            text: input
+          }
           let copy = [...post];
-          copy.push(input);
+          copy.push(text);
           setPost(copy);
           setInput('');
         }}>
@@ -41,12 +44,16 @@ function Post(props) {
     <div>
       {
         props.post.map(function(e, i) {
+          const onRemove = id => {
+            let copy = [...props.post];
+            
+          }
           return(
             <>
-              <div className='item' >
-                    <span className='item__name'>{props.post[i]}</span>
-                    <button className='item__delete' onClick={() => {
-                      //삭제
+              <div className='item'>
+                    <span className='item__name' key={i}>{props.post[i].text}</span>
+                    <button className='item__delete' onClick={() =>{
+                      onRemove(props.post.id)
                     }}><FontAwesomeIcon icon={ faTrash } /></button>
               </div>
               <div className='item__divider'></div>
