@@ -39,21 +39,20 @@ function App() {
   );
 }
 
-function Post(props) {
+function Post({ post, setPost }) {
   return(
     <div>
       {
-        props.post.map(function(e, i) {
-          const onRemove = id => {
-            let copy = [...props.post];
-            
+        post.map(function(e, i) {
+          const onRemove = (id) => {
+            setPost((post) => post.filter((post) => post.id !== id));
           }
           return(
             <>
               <div className='item'>
-                    <span className='item__name' key={i}>{props.post[i].text}</span>
+                    <span className='item__name' key={i}>{post[i].text}</span>
                     <button className='item__delete' onClick={() =>{
-                      onRemove(props.post.id)
+                      onRemove(e.id);
                     }}><FontAwesomeIcon icon={ faTrash } /></button>
               </div>
               <div className='item__divider'></div>
